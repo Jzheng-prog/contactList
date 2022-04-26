@@ -39,7 +39,7 @@ def main():
     pass
 
 if __name__ == "__main__":
-    print
+    print("Test 2")
     pass
 
 
