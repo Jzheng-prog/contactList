@@ -16,7 +16,7 @@ class contact:
 
 """Functions below helps us parse throught he context to fine the information we want"""
 def parseContact(contactList):
-        pass
+        c = "etc"
 def parseName(contactList):
         pass
 def parseEmail(contactList):
