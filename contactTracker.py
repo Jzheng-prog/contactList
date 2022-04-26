@@ -15,24 +15,35 @@ class contact:
         self.PhoneNum = parsePhoneNum(contactList)
 
 """Functions below helps us parse throught he context to fine the information we want"""
+
+"""Bushrah"""
 def parseContact(contactList):
         pass
+"""Bushrah"""
 def parseName(contactList):
         pass
+
+"""John"""
 def parseEmail(contactList):
         pass
+
+"""Derek"""
 def parseAddress(contactList):
         pass
+"""Derek"""
 def parsePhoneNum(contactList):
         pass
 
 """Add the contact object to a list of contacts"""
+"""John"""
 def addContactToList():
         pass
 """"Sort the list"""
+"""John"""
 def sortList():
         pass
-    
+
+
 
 
 def main():
