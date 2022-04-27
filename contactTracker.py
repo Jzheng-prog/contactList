@@ -12,33 +12,36 @@ we can break organized them by name (alphabetacle order) or by phone number."""
 """One contact object contains names, emails, phone number, and addresses. There will be a list of contact objects in another class 
 called MyContactList."""
 class Contact:
-    def __init__(self, contactList):
-        self.name = parseName(contactList)
-        self.email = parseEmail(contactList)
-        self.address = parseAddress(contactList)
-        self.PhoneNum = parsePhoneNum(contactList)
+
+    def __init__(self, singleContactLine):
+
+        self.name = parseName(singleContactLine)
+        self.email = parseEmail(singleContactLine)
+        self.address = parseAddress(singleContactLine)
+        self.PhoneNum = parsePhoneNum(singleContactLine)
 
 """Functions below helps us parse throught he context to fine the information we want"""
 
 """Bushrah"""
-def parseContact(contactList):
+def parseContact(singleContactLine):
         pass
 """Bushrah"""
-def parseName(contactList):
+def parseName(singleContactLine):
         pass
 
 """John"""
-def parseEmail(contactList):
+"""pasrseEmail does not inlcude all scenerios."""
+def parseEmail(singleContactLine):
 
         pattern = re.compile(r"\w+@\w+.+")
-        match = pattern.search(contactList)
+        match = pattern.search(singleContactLine)
         return match
 
 """Derek"""
-def parseAddress(contactList):
+def parseAddress(singleContactLine):
         pass
 """Derek"""
-def parsePhoneNum(contactList):
+def parsePhoneNum(singleContactLine):
         pass
 
 
@@ -57,12 +60,22 @@ class MyContactList:
         def sortList():
                 pass
 
-
-
-if __name__ == "__main__":
+"""Main would not work right now, cause each line is not a new contact, rather part of a contact. Need revision."""
+def main(pathTxtFile):
 
         """Need to open the txt file"""
-        openTxt = open(ContactList, "r")
-        contactInstance = Contact()
+        openTxt = open(pathTxtFile, "r")
+        text = openTxt.readlines()
+
+        tempList = []
+
+        for line in text:
+                contact_instance = Contact(line)
+                tempList.append(contact_instance)
+
+        return tempList
+
+if __name__ == "__main__":
+        pass
 
 
