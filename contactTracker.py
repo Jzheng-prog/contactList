@@ -14,7 +14,6 @@ called MyContactList."""
 class Contact:
 
     def __init__(self, singleContactLine):
-
         self.name = parseName(singleContactLine)
         self.email = parseEmail(singleContactLine)
         self.address = parseAddress(singleContactLine)
@@ -33,7 +32,7 @@ def parseName(singleContactLine):
 """pasrseEmail does not inlcude all scenerios."""
 def parseEmail(singleContactLine):
 
-        pattern = re.compile(r"\w+@\w+.+")
+        pattern = re.compile(r".+?@.+")
         match = pattern.search(singleContactLine)
         return match
 
@@ -58,7 +57,7 @@ class MyContactList:
                 readtxt = opentxt.read()
 
                 """Construct regex pattern and search for it in the file"""
-                contactPattern = re.compile(r"[s\S]*?(com|edu|net")
+                contactPattern = re.compile(r"[s\S]*?@.+")
                 searchPattern = contactPattern.search(readtxt)
 
                 """Use loop to break the file into individual Contact objects, and append to list"""
