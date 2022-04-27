@@ -24,11 +24,19 @@ class Contact:
 
 """Bushrah"""
 def parseContact(singleContactLine):
-        pass
+    singleContactLine.parseList= list
+    if parseList.name in self.list:
+        self.parseList[name].append((int(Contact), str(singleContactLine)):
+            return True
 """Bushrah"""
 def parseName(singleContactLine):
-        pass
-
+    singleContactLine.parseName= name
+    if parseName.name in self.name:
+        self.parseName[name].append((int(Contact), str(singleContactLine)):
+            return True
+        
+    
+    
 """John"""
 """pasrseEmail does not inlcude all scenerios."""
 def parseEmail(singleContactLine):
