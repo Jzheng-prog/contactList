@@ -49,31 +49,31 @@ def parsePhoneNum(singleContactLine):
 
 """MyContackList class will have a list of contact objects, and can manipulate/sort contact Objects"""
 class MyContactList:
-        def __init__(self):
-                self.contactList = []
+        def __init__(self, allCONTACTFILE):
 
-        """Add the contact object to a list of contacts""""""John"""
-        def addContactToList(self, Contact):
-                self.contactList.append(Contact)
+                """Create a contactList"""
+                self.contactList = []
+                """Open and read the file parameter"""
+                opentxt = open(allCONTACTFILE, "r")
+                readtxt = opentxt.read()
+
+                """Construct regex pattern and search for it in the file"""
+                contactPattern = re.compile(r"[s\S]*?(com|edu|net")
+                searchPattern = contactPattern.search(readtxt)
+
+                """Use loop to break the file into individual Contact objects, and append to list"""
+                for contacts in searchPattern:
+                        contactObj = Contact(contacts)
+                        self.contactList.append(contactObj)
+
 
         """"Sort the list""""""John"""
         def sortList():
                 pass
 
-"""Main would not work right now, cause each line is not a new contact, rather part of a contact. Need revision."""
+
 def main(pathTxtFile):
-
-        """Need to open the txt file"""
-        openTxt = open(pathTxtFile, "r")
-        text = openTxt.readlines()
-
-        tempList = []
-
-        for line in text:
-                contact_instance = Contact(line)
-                tempList.append(contact_instance)
-
-        return tempList
+        pass
 
 if __name__ == "__main__":
         pass
