@@ -9,9 +9,9 @@ to organized them base on the broken parts, for example
 we can break organized them by name (alphabetacle order) or by phone number."""
 
 
-"""One contact object contains names, emails, phone number, and addresses. There will be a list of contact objects."""
-class contact:
-
+"""One contact object contains names, emails, phone number, and addresses. There will be a list of contact objects in another class 
+called MyContactList."""
+class Contact:
     def __init__(self, contactList):
         self.name = parseName(contactList)
         self.email = parseEmail(contactList)
@@ -41,23 +41,28 @@ def parseAddress(contactList):
 def parsePhoneNum(contactList):
         pass
 
-"""Add the contact object to a list of contacts"""
-"""John"""
-def addContactToList():
-        pass
-""""Sort the list"""
-"""John"""
-def sortList():
-        pass
 
 
 
+"""MyContackList class will have a list of contact objects, and can manipulate/sort contact Objects"""
+class MyContactList:
+        def __init__(self):
+                self.contactList = []
 
-def main():
-    pass
+        """Add the contact object to a list of contacts""""""John"""
+        def addContactToList(self, Contact):
+                self.contactList.append(Contact)
+
+        """"Sort the list""""""John"""
+        def sortList():
+                pass
+
+
 
 if __name__ == "__main__":
-    print("Test 2")
-    pass
+
+        """Need to open the txt file"""
+        openTxt = open(ContactList, "r")
+        contactInstance = Contact()
 
 
