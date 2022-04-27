@@ -1,4 +1,8 @@
 
+import re
+import sys
+import argparse
+
 """We will have a list of contacts, with the names, emails, phone number, and addresses. This could be one or more. We will parse
 through the list, break them up into individual objects, and then we can have different methods/functions
 to organized them base on the broken parts, for example
@@ -25,7 +29,10 @@ def parseName(contactList):
 
 """John"""
 def parseEmail(contactList):
-        pass
+
+        pattern = re.compile(r"\w+@\w+.+")
+        match = pattern.search(contactList)
+        return match
 
 """Derek"""
 def parseAddress(contactList):
