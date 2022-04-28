@@ -39,10 +39,13 @@ def parseEmail(singleContactLine):
 
 """Derek"""
 def parseAddress(singleContactLine):
-        pass
+        addfind = re.findall("\w+\w+\w",singleContactLine)
+        return addfind
+
 """Derek"""
 def parsePhoneNum(singleContactLine):
-        pass
+        phofind = re.findall("\w+\w+\w",singleContactLine)
+        return phofind
 
 
 
