@@ -24,10 +24,14 @@ class Contact:
 
 """Bushrah"""
 def parseContact(singleContactLine):
-        pass
+    pattern = re.compile("\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$")
+    match = pattern.search(singleContactLine)
+    return match
 """Bushrah"""
 def parseName(singleContactLine):
-        pass
+    pattern = re.compile("/[A-Z]([a-z]+|\.)(?:\s+[A-Z]([a-z]+|\.))*(?:\s+[a-z][a-z\-]+){0,2}\s+[A-Z]([a-z]+|\.)/gm")
+    match = pattern.search(singleContactLine)
+    return match
 
 """John"""
 def parseEmail(singleContactLine):
