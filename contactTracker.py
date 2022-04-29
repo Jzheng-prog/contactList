@@ -13,31 +13,23 @@ we can break organized them by name (alphabetacle order) or by phone number."""
 called MyContactList."""
 class Contact:
 
-    def __init__(self, singleContactLine):
-        self.name = parseName(singleContactLine)
-        self.email = parseEmail(singleContactLine)
-        self.address = parseAddress(singleContactLine)
-        self.PhoneNum = parsePhoneNum(singleContactLine)
+        """would use parse functions to find each atrribute of the contact"""
+        def __init__(self, singleContactLine):
+                self.name = parseName(singleContactLine)
+                self.email = parseEmail(singleContactLine)
+                self.address = parseAddress(singleContactLine)
+                self.PhoneNum = parsePhoneNum(singleContactLine)
 
-"""Functions below helps us parse throught he context to fine the information we want"""
+"""Functions below helps us parse through the text to find the information we want"""
 
 """Bushrah"""
 def parseContact(singleContactLine):
-    singleContactLine.parseList= list
-    if parseList.name in self.list:
-        self.parseList[name].append((int(Contact), str(singleContactLine)):
-            return True
+        pass
 """Bushrah"""
 def parseName(singleContactLine):
-    singleContactLine.parseName= name
-    if parseName.name in self.name:
-        self.parseName[name].append((int(Contact), str(singleContactLine)):
-            return True
-        
-    
-    
+        pass
+
 """John"""
-"""pasrseEmail does not inlcude all scenerios."""
 def parseEmail(singleContactLine):
 
         pattern = re.compile(r".+?@.+")
@@ -61,7 +53,7 @@ def parsePhoneNum(singleContactLine):
 class MyContactList:
         def __init__(self, allCONTACTFILE):
 
-                """Create a contactList"""
+                """Create a contact List"""
                 self.contactList = []
                 """Open and read the file parameter"""
                 opentxt = open(allCONTACTFILE, "r")
