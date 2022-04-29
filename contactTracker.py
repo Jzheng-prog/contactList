@@ -53,7 +53,7 @@ def parsePhoneNum(singleContactLine):
 class MyContactList:
         def __init__(self, allCONTACTFILE):
 
-                """Create a contact List"""
+                """Create a contactList"""
                 self.contactList = []
                 """Open and read the file parameter"""
                 opentxt = open(allCONTACTFILE, "r")
