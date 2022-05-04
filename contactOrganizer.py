@@ -79,6 +79,6 @@ def main(pathTxtFile):
                 """Then append to the list_instance list"""
                 myContactList_instance.contactList.append(contactObj)
 
-        print(myContactList_instance)
+        print(myContactList_instance.contactList)
 
 
