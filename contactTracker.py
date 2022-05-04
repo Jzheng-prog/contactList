@@ -23,35 +23,32 @@ class Contact:
 
 """Functions below helps us parse through the text to find the information we want"""
 
-"""Bushrah"""
-def parseContact(singleContactLine):
-    pattern = re.compile("\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$")
-    match = pattern.search(singleContactLine)
-    return match
+
 """Bushrah"""
 def parseName(singleContactLine):
-    pattern = re.compile("/[A-Z]([a-z]+|\.)(?:\s+[A-Z]([a-z]+|\.))*(?:\s+[a-z][a-z\-]+){0,2}\s+[A-Z]([a-z]+|\.)/gm")
-    match = pattern.search(singleContactLine)
-    return match
+        pattern = re.compile(r"Contact \d:(\n.+)")
+        match = pattern.search(singleContactLine)
+        return match.group(1)
 
 """John"""
 def parseEmail(singleContactLine):
-
+        
         pattern = re.compile(r".+?@.+")
         match = pattern.search(singleContactLine)
         return match
 
 """Derek"""
 def parseAddress(singleContactLine):
-        addfind = re.findall("\w+\w+\w",singleContactLine)
-        return addfind
+        pattern = re.compile(r"Contact \d:(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)")
+        match = pattern.search(singleContactLine)
+        return match.group(2,3,4,5)
+
 
 """Derek"""
 def parsePhoneNum(singleContactLine):
-        phofind = re.findall("\w+\w+\w",singleContactLine)
-        return phofind
-
-
+        pattern = re.compile(r"Contact \d:(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)")
+        match = pattern.search(singleContactLine)
+        return match.group(6)
 
 
 """MyContackList class will have a list of contact objects, and can manipulate/sort contact Objects"""
@@ -72,11 +69,6 @@ class MyContactList:
                 for contacts in searchPattern:
                         contactObj = Contact(contacts)
                         self.contactList.append(contactObj)
-
-
-        """"Sort the list""""""John"""
-        def sortList():
-                pass
 
 
 def main(pathTxtFile):
