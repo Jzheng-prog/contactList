@@ -53,28 +53,32 @@ def parsePhoneNum(singleContactLine):
 
 """MyContackList class will have a list of contact objects, and can manipulate/sort contact Objects"""
 class MyContactList:
-        def __init__(self, allCONTACTFILE):
 
+        def __init__(self):
                 """Create a contactList"""
                 self.contactList = []
-                """Open and read the file parameter"""
-                opentxt = open(allCONTACTFILE, "r")
-                readtxt = opentxt.read()
 
-                """Construct regex pattern and search for it in the file"""
-                contactPattern = re.compile(r"[s\S]*?@.+")
-                searchPattern = contactPattern.search(readtxt)
-
-                """Use loop to break the file into individual Contact objects, and append to list"""
-                for contacts in searchPattern:
-                        contactObj = Contact(contacts)
-                        self.contactList.append(contactObj)
 
 
 def main(pathTxtFile):
-        pass
 
-if __name__ == "__main__":
-        pass
+        """Open and read the file parameter"""
+        opentxt = open(pathTxtFile, "r")
+        readtxt = opentxt.read()
+
+        """Construct regex pattern and search for it in the file"""
+        contactAmount = re.findall(r".+\n.+\n.+\n.+\n.+\n.+\n.+\n.+", readtxt)
+
+        """"Create a MyContactList Object"""
+        myContactList_instance = MyContactList()
+
+        """Use loop to break the file into individual Contact objects, and append to list"""
+        for contacts in contactAmount:
+                """for each contacts in searchPattern, create an new contact obj"""
+                contactObj = Contact(contacts)
+                """Then append to the list_instance list"""
+                myContactList_instance.contactList.append(contactObj)
+
+        print(myContactList_instance)
 
 
