@@ -1,4 +1,5 @@
 
+from ast import arg
 import re
 import sqlite3
 import sys
@@ -58,6 +59,10 @@ class MyContactList:
                 """Create a contactList"""
                 self.contactList = []
 
+        """return list as a string"""
+        def __repr__(self):
+                pass
+
 
 
 def main(pathTxtFile):
@@ -66,19 +71,35 @@ def main(pathTxtFile):
         opentxt = open(pathTxtFile, "r")
         readtxt = opentxt.read()
 
-        """Construct regex pattern and search for it in the file"""
-        contactAmount = re.findall(r".+\n.+\n.+\n.+\n.+\n.+\n.+\n.+", readtxt)
+        """Construct regex pattern and search for contacts in the file"""
+        pattern = re.compile(r".+\n.+\n.+\n.+\n.+\n.+\n.+\n.+")
+
+        matches = pattern.findall(readtxt)
 
         """"Create a MyContactList Object"""
         myContactList_instance = MyContactList()
 
         """Use loop to break the file into individual Contact objects, and append to list"""
-        for contacts in contactAmount:
+        for contacts in matches:
+                
                 """for each contacts in searchPattern, create an new contact obj"""
                 contactObj = Contact(contacts)
                 """Then append to the list_instance list"""
                 myContactList_instance.contactList.append(contactObj)
 
-        print(myContactList_instance.contactList)
+        print(myContactList_instance)
+
+def parse_args(args_list):
+
+        parser = argparse.ArgumentParser()
+        parser.add_argument('--path', type = str, help = 'The path of samConList.txt.')
+        args = parser.parse_args(args_list)
+        return args
+
+
+if __name__ == "__main__":
+        args = parse_args(sys.argv[1:])
+        main(arg.pathTxtFile)
+
 
 
