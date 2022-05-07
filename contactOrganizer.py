@@ -1,5 +1,5 @@
 
-from ast import arg
+from ast import arg, arguments
 import re
 import sqlite3
 import sys
@@ -29,27 +29,32 @@ class Contact:
 def parseName(singleContactLine):
         pattern = re.compile(r"Contact \d:(\n.+)")
         match = pattern.search(singleContactLine)
-        return match.group(1)
+        return match.group(1).lstrip()
 
 """John"""
 def parseEmail(singleContactLine):
         
         pattern = re.compile(r".+?@.+")
         match = pattern.search(singleContactLine)
-        return match
+        return match.group()
 
 """Derek"""
 def parseAddress(singleContactLine):
         pattern = re.compile(r"Contact \d:(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)")
         match = pattern.search(singleContactLine)
-        return match.group(2,3,4,5)
+
+        street = match.group(2).lstrip()
+        city = match.group(3).lstrip()
+        state = match.group(4).lstrip()
+        zipcode = match.group(5).lstrip()
+        return street + ", " + city + ", " + state + ", " + zipcode
 
 
 """Derek"""
 def parsePhoneNum(singleContactLine):
         pattern = re.compile(r"Contact \d:(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)")
         match = pattern.search(singleContactLine)
-        return match.group(6)
+        return match.group(6).lstrip()
 
 
 """MyContackList class will have a list of contact objects, and can manipulate/sort contact Objects"""
@@ -92,14 +97,14 @@ def main(pathTxtFile):
 def parse_args(args_list):
 
         parser = argparse.ArgumentParser()
-        parser.add_argument('--path', type = str, help = 'The path of samConList.txt.')
+        parser.add_argument('required', type = str, help = 'The path of samConList.txt.')
         args = parser.parse_args(args_list)
         return args
 
 
 if __name__ == "__main__":
         args = parse_args(sys.argv[1:])
-        main(arg.pathTxtFile)
+        main(args.required)
 
 
 
