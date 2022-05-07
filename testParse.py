@@ -1,17 +1,10 @@
 
 import re
 
+"""Test parse methods"""
 
-contact1 = """
-Contact 1:
-Erik Zale
-345 College St
-Hyattsville
-MD
-20494
-311-573-4567
-Argo37@gmail.com
-"""
+contacts = open("oneContact.txt", "r")
+readFile = contacts.read()
 
 def parseName(singleContactLine):
         pattern = re.compile(r"Contact \d:(\n.+)")
@@ -39,7 +32,7 @@ def parsePhoneNum(singleContactLine):
         match = pattern.search(singleContactLine)
         return match.group(6).lstrip()
 
-print("Name: "+ str(parseName(contact1)))
-print("Email: " + str(parseEmail(contact1)))
-print("Address: " + str(parseAddress(contact1)))
-print("Phone Number: " + str(parsePhoneNum(contact1)))
+print("Name: "+ str(parseName(readFile)))
+print("Email: " + str(parseEmail(readFile)))
+print("Address: " + str(parseAddress(readFile)))
+print("Phone Number: " + str(parsePhoneNum(readFile)))

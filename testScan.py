@@ -1,5 +1,7 @@
 import re
 
+"""Test scanning for one contact in a list of contacts"""
+
 f = open("samConList.txt", "r")
 
 readTXT = f.read()

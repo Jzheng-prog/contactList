@@ -18,9 +18,13 @@ class Contact:
         """would use parse functions to find each atrribute of the contact"""
         def __init__(self, singleContactLine):
                 self.name = parseName(singleContactLine)
-                self.email = parseEmail(singleContactLine)
                 self.address = parseAddress(singleContactLine)
+                self.email = parseEmail(singleContactLine)
                 self.PhoneNum = parsePhoneNum(singleContactLine)
+
+        """return self"""
+        def __repr__(self):
+                return self.name + ", " + self.address + ", "+ self.email+ ", "+ self.PhoneNum
 
 """Functions below helps us parse through the text to find the information we want"""
 
@@ -66,8 +70,7 @@ class MyContactList:
 
         """return list as a string"""
         def __repr__(self):
-                pass
-
+                return str(self)
 
 
 def main(pathTxtFile):
@@ -86,13 +89,14 @@ def main(pathTxtFile):
 
         """Use loop to break the file into individual Contact objects, and append to list"""
         for contacts in matches:
-                
+
                 """for each contacts in searchPattern, create an new contact obj"""
                 contactObj = Contact(contacts)
+                
                 """Then append to the list_instance list"""
-                myContactList_instance.contactList.append(contactObj)
+                myContactList_instance.contactList.append(str(contactObj))
 
-        print(myContactList_instance)
+        print(myContactList_instance.contactList)
 
 def parse_args(args_list):
 
@@ -105,6 +109,12 @@ def parse_args(args_list):
 if __name__ == "__main__":
         args = parse_args(sys.argv[1:])
         main(args.required)
+
+
+
+#To run code paste below to terminal
+# 
+# python3 contactOrganizer.py samConList.txt
 
 
 
