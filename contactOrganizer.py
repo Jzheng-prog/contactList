@@ -20,7 +20,7 @@ class Contact:
                 self.name = parseName(singleContactLine)
                 self.address = parseAddress(singleContactLine)
                 self.email = parseEmail(singleContactLine)
-                self.PhoneNum = parsePhoneNum(singleContactLine)
+                self.phoneNum = parsePhoneNum(singleContactLine)
 
         """return self"""
         def __repr__(self):
@@ -73,6 +73,32 @@ class MyContactList:
                 return str(self)
 
 
+
+""""Pass a contact list and load it into a sql database"""
+
+def sqlLoadList(contactList):
+
+        #define connection and cursor
+        connection = sqlite3.Connection('contacts_list.db')
+
+        cursor = connection.cursor()
+
+        #create contact table
+        command1 = """ CREATE TABLE IF NOT EXISTS
+        contacts(name VARCHAR(50), Address VARCHAR(50), email VARCHAR(50), phonenum VARCHAR(50))"""
+
+        cursor.execute(command1)
+
+        for contacts in contactList:
+                cursor.execute("INSERT INTO contacts VALUES(?, ?, ?)", (contacts.name, contacts.address, contacts.email, contacts.PhoneNum))
+
+        cursor.execute("SELECT * FROM contacts")
+
+        results = cursor.fetchone()
+
+        print(results)
+
+
 def main(pathTxtFile):
 
         """Open and read the file parameter"""
@@ -96,7 +122,7 @@ def main(pathTxtFile):
                 """Then append to the list_instance list"""
                 myContactList_instance.contactList.append(str(contactObj))
 
-        print(myContactList_instance.contactList)
+        """Load myContactList_instance into SQL databse"""
 
 def parse_args(args_list):
 
