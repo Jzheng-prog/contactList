@@ -81,23 +81,34 @@ def sqlLoadList(contactList):
 
         #create contact table
         command1 = """ CREATE TABLE IF NOT EXISTS
-        contacts(Name VARCHAR(50), Address VARCHAR(50), Email VARCHAR(50), Phonenum VARCHAR(50))"""
+        contacts(Name VARCHAR(50), Address VARCHAR(50), Email VARCHAR(50) UNIQUE, Phonenum VARCHAR(50) UNIQUE)"""
 
         cursor.execute(command1)
 
         for x in contactList:
 
-                cursor.execute("INSERT INTO contacts VALUES(?, ?, ?, ?)", 
+                cursor.execute("INSERT OR IGNORE INTO contacts VALUES(?, ?, ?, ?)", 
                 (x.name, x.address, x.email, x.phoneNum))
 
-        cursor.execute("SELECT * FROM contacts")
+        #cursor.execute("SELECT * FROM contacts")
 
-        results = cursor.fetchall()
+        #results = cursor.fetchall()
 
         #commit change to the DB Browswer
         connection.commit()
 
-        print(results)
+"""Sort database by name in alphabetical order. """
+def byName():
+
+        #define connection and cursor
+        connection = sqlite3.Connection('final_contacts_list.db')
+
+        cursor = connection.cursor()
+
+        cursor.execute("SELECT * FROM contacts ORDER BY Name")
+
+        connection.commit()
+
 
 
 
@@ -125,6 +136,10 @@ def main(pathTxtFile):
                 myContactList_instance.contactList.append(contactObj)
         
         sqlLoadList(myContactList_instance.contactList)
+
+        byName()
+
+
 
 
 def parse_args(args_list):
