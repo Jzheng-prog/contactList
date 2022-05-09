@@ -1,5 +1,5 @@
 
-from ast import arg, arguments
+
 import re
 import sqlite3
 import sys
@@ -81,7 +81,7 @@ def sqlLoadList(contactList):
 
         #create contact table
         command1 = """ CREATE TABLE IF NOT EXISTS
-        contacts(Name VARCHAR(50), Address VARCHAR(50), Email VARCHAR(50) UNIQUE, Phonenum VARCHAR(50) UNIQUE)"""
+        contacts(Name VARCHAR(50), Address VARCHAR(50), Email VARCHAR(50) UNIQUE, PhoneNum VARCHAR(50) UNIQUE)"""
 
         cursor.execute(command1)
 
@@ -98,7 +98,7 @@ def sqlLoadList(contactList):
         connection.commit()
 
 """Sort database by name in alphabetical order. """
-def byName():
+def sortByName():
 
         #define connection and cursor
         connection = sqlite3.Connection('final_contacts_list.db')
@@ -109,8 +109,52 @@ def byName():
 
         connection.commit()
 
+        #print(cursor.fetchall())
 
 
+"""Sort database by Address in alphabetical order. """
+def sortByAddress():
+
+        #define connection and cursor
+        connection = sqlite3.Connection('final_contacts_list.db')
+
+        cursor = connection.cursor()
+
+        cursor.execute("SELECT * FROM contacts ORDER BY Address")
+
+        connection.commit()
+
+        print(cursor.fetchall())
+
+"""Sort database by Email in alphabetical order. """
+def sortByEmail():
+
+        #define connection and cursor
+        connection = sqlite3.Connection('final_contacts_list.db')
+
+        cursor = connection.cursor()
+
+        cursor.execute("SELECT * FROM contacts ORDER BY Email")
+
+        connection.commit()
+
+        print(cursor.fetchall())
+
+
+"""Sort database by PhoneNum in descending order. """
+def sortByPhoneNum():
+
+        #define connection and cursor
+        connection = sqlite3.Connection('final_contacts_list.db')
+
+        cursor = connection.cursor()
+
+        cursor.execute("SELECT * FROM contacts ORDER BY PhoneNum")
+
+        connection.commit()
+
+        print(cursor.fetchall())
+        
 
 def main(pathTxtFile):
 
@@ -137,9 +181,10 @@ def main(pathTxtFile):
         
         sqlLoadList(myContactList_instance.contactList)
 
-        byName()
-
-
+        #sortByName()
+        #sortByAddress()
+        #sortByEmail()
+        #sortByPhoneNum()
 
 
 def parse_args(args_list):
