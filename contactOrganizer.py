@@ -27,21 +27,20 @@ class Contact:
 
 #Functions below helps us parse through the text to find the information we want
 
-
-"""Bushrah"""
+"""Parse for name in the contact"""
 def parseName(singleContactLine):
         pattern = re.compile(r"Contact \d:(\n.+)")
         match = pattern.search(singleContactLine)
         return match.group(1).lstrip()
 
-"""John"""
+"""Parse for email in the contact"""
 def parseEmail(singleContactLine):
         
         pattern = re.compile(r".+?@.+")
         match = pattern.search(singleContactLine)
         return match.group()
 
-"""Derek"""
+"""Parse for address in the contact"""
 def parseAddress(singleContactLine):
         pattern = re.compile(r"Contact \d:(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)")
         match = pattern.search(singleContactLine)
@@ -53,7 +52,7 @@ def parseAddress(singleContactLine):
         return street + ", " + city + ", " + state + ", " + zipcode
 
 
-"""Derek"""
+"""Parse for phoneNumber in the contact"""
 def parsePhoneNum(singleContactLine):
         pattern = re.compile(r"Contact \d:(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)(\n.+)")
         match = pattern.search(singleContactLine)
