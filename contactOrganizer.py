@@ -1,5 +1,3 @@
-
-
 import re
 import sqlite3
 import sys
@@ -13,6 +11,7 @@ we can break organized them by name (alphabetacle order) or by phone number."""
 
 """One contact object contains names, emails, phone number, and addresses. There will be a list of contact objects in another class 
 called MyContactList."""
+
 class Contact:
 
         """would use parse functions to find each atrribute of the contact"""
@@ -70,7 +69,7 @@ class MyContactList:
 
         """return list as a string"""
         def __repr__(self):
-                return str(self)
+                return str(self.contactList)
 
 def sqlLoadList(contactList):
 
@@ -90,9 +89,11 @@ def sqlLoadList(contactList):
                 cursor.execute("INSERT OR IGNORE INTO contacts VALUES(?, ?, ?, ?)", 
                 (x.name, x.address, x.email, x.phoneNum))
 
-        #cursor.execute("SELECT * FROM contacts")
+        cursor.execute("SELECT * FROM contacts")
 
-        #results = cursor.fetchall()
+        results = cursor.fetchall()
+
+        print(results)
 
         #commit change to the DB Browswer
         connection.commit()
@@ -109,7 +110,7 @@ def sortByName():
 
         connection.commit()
 
-        #print(cursor.fetchall())
+        print(cursor.fetchall())
 
 
 """Sort database by Address in alphabetical order. """
@@ -181,7 +182,9 @@ def main(pathTxtFile):
         
         sqlLoadList(myContactList_instance.contactList)
 
-        #sortByName()
+
+
+        sortByName()
         #sortByAddress()
         #sortByEmail()
         #sortByPhoneNum()
