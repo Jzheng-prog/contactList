@@ -201,6 +201,9 @@ if __name__ == "__main__":
         args = parse_args(sys.argv[1:])
         main(args.required)
 
+def printHello():
+        print("hello")
+
 
 
 #To run code paste below to terminal
