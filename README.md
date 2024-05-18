@@ -1,8 +1,6 @@
 # contactList
 Final Project
 
-The challenge: I can never keep track of all my contacts because I have too many
-friends. I'm just too popular for my own good.
 ● Overview of the project.
 For this project, we aim to solve problems for people who are too popular or have a
 messy contact list. In order to solve this problem, we take in a list of contacts and parse
